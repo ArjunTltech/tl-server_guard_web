@@ -10,7 +10,7 @@
 	<meta name="keywords"
 		content="website monitoring, performance monitoring, uptime monitoring, user experience monitoring, website analytics">
 	<meta name="robots" content="index, follow">
-	<meta name="canonical" href="https://ServerGuard.tltechnologies.net/">
+	<meta name="canonical" href="https://serverguard.tltechnologies.net/">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="language" content="English">
 	<meta name="revisit-after" content="1 days">
@@ -18,14 +18,14 @@
 	<meta property="og:title" content="ServerGuard - Your trusted solution for effective monitoring and management.">
 	<meta property="og:description"
 		content="ServerGuard is a powerful and comprehensive website monitoring solution that helps you keep track of your website's performance, uptime, and user experience.">
-	<meta property="og:image" content="https://ServerGuard.tltechnologies.net/images/ServerGuard-meta.jpeg">
+	<meta property="og:image" content="https://serverguard.tltechnologies.net/images/ServerGuard-meta.jpeg">
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:title" content="ServerGuard - Advanced Website Monitoring Solution">
 	<meta name="twitter:description"
 		content="ServerGuard is a powerful and comprehensive website monitoring solution that helps you keep track of your website's performance, uptime, and user experience.">
 	<meta name="twitter:image"
-		content="https://ServerGuard.tltechnologies.net/images/server monitor website-coming soon poster.jpg">
-	<link rel="alternate" href="https://ServerGuard.tltechnologies.net/" hreflang="en">
+		content="https://serverguard.tltechnologies.net/images/server monitor website-coming soon poster.jpg">
+	<link rel="alternate" href="https://serverguard.tltechnologies.net/" hreflang="en">
 	<title>ServerGuard - Your trusted solution for effective monitoring and management.</title>
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-P2Q8V40XQ6"></script>
@@ -74,7 +74,7 @@
 						</button>
 						<div class="logo-container nav-brand" style="display: flex; align-items: center;">
 							<a href="#home">
-							<img class="logo logo-light" src="Sg-logo.png" width="80px" alt="logo" /></a>
+								<img class="logo logo-light" src="Sg-logo.png" width="80px" alt="logo" /></a>
 							<!-- <img class="logo logo-color" src="Sg-logo.png" width="80px" alt="logo" /> -->
 							<span class="brand-text light-text">Server Guard</span>
 							<span class="brand-text dark-text">Server Guard</span>
@@ -743,9 +743,77 @@
 	<!-- .footer-section  -->
 
 	<!-- Preloader !remove please if you do not want -->
-	<div id="preloader">
+	<!-- <div id="preloader">
 		<div id="status">&nbsp;</div>
-	</div>
+	</div> -->
+	<div id="preloader">
+		<div class="loader-container">
+		  <img src="Sg-logo.png" alt="Logo" class="loader-logo">
+		  <div class="loader-progress">
+			<div class="progress-bar"></div>
+		  </div>
+		  <div class="loader-text">Loading... 0%</div>
+		</div>
+	  </div>
+	  <script>
+		/**
+ * Preloader
+ */
+document.addEventListener("DOMContentLoaded", function () {
+  const preloader = document.getElementById("preloader");
+  const progressBar = document.querySelector(".progress-bar");
+  const loadingText = document.querySelector(".loader-text");
+  const minimumLoadTime = 4000; // 4 seconds minimum display time (adjust as needed)
+  const startTime = Date.now();
+  let progress = 0;
+
+  // Update progress bar
+  function updateProgress() {
+    if (progress < 90) {
+      progress += Math.random() * 20;
+      progress = Math.min(progress, 90);
+      progressBar.style.width = progress + "%";
+      loadingText.textContent = "Loading... " + Math.round(progress) + "%";
+    }
+  }
+
+  // Start progress updates
+  const progressInterval = setInterval(updateProgress, 200);
+
+  // Hide preloader function
+  function hidePreloader() {
+    // Quickly complete the progress bar
+    progress = 100;
+    progressBar.style.width = "100%";
+    loadingText.textContent = "Loading... 100%";
+
+    // Clear the progress interval
+    clearInterval(progressInterval);
+
+    // Add slight delay before hiding
+    setTimeout(() => {
+      preloader.classList.add("preloader-hidden");
+      setTimeout(() => {
+        preloader.style.display = "none";
+      }, 600);
+    }, 400);
+  }
+
+  // Handle page load
+  window.addEventListener("load", function () {
+    const currentTime = Date.now();
+    const elapsedTime = currentTime - startTime;
+
+    // Ensure the minimum load time is respected
+    if (elapsedTime < minimumLoadTime) {
+      setTimeout(hidePreloader, minimumLoadTime - elapsedTime);
+    } else {
+      hidePreloader();
+    }
+  });
+});
+
+	  </script>
 	<!-- Preloader End -->
 
 	<!-- Google Map Script -->
